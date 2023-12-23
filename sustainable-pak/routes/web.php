@@ -15,20 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Main/home');
+    return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('Main/home');
-});
+// Route::get('/home', function () {
+//     return view('Main/home');
+// });
 
-Route::get('/business_signup', function () {
+Route::get('/business/signup', function () {
     return view('Main/business_signup');
-});
+})->name('business.signup');
 
-Route::get('/login', function () {
-    return view('Main/login');
-});
+// Route::get('/mylogin', function () {
+//     return view('Main/login');
+// })->name('Main.login');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

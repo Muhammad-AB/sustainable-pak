@@ -20,17 +20,33 @@
         </a>
 
         <nav>
+            @if(auth()->check())
+            @if(auth()->user()->role == 'A')
+            <a href="">Dashboard</a> <!-- user signed in -->
+            @endif
+            @if(auth()->user()->role == 'B')
+            <a href="">Dashboard</a> <!-- user signed in -->
+            @endif
+            @endif
             <a href="{{ url('home') }}">Home</a>
-            <a href="">Sustainable Businesses</a>
+            <a href="">Businesses</a>
             <a href="">Blog</a>
             <!-- <a href="{{ url('resources.html') }}">Resources</a> -->
             <a href="">About</a>
-            
+
             @if(auth()->check())
-                <a href="">Dashboard</a> <!-- user signed in -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <a :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </a>
+            </form>
             @else
-                <a href="{{ url('login') }}">Login/Sign up</a> <!-- user not signed in -->
+            <a href="{{ url('login') }}">Login</a> <!-- user not signed in -->
             @endif
+
         </nav>
 
         <div id="menu-btn">&#9776;</div>
@@ -39,9 +55,9 @@
     @yield('section')
 
     <footer>
-     
+
         <div class="footer">
-            
+
             <div class="footer-links">
                 <div class="footer-links-text">
                     <a href="{{ url('home') }}">Home</a>

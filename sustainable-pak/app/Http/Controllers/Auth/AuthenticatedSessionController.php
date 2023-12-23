@@ -17,19 +17,32 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('Main.login');
     }
 
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request)
     {
         $request->authenticate();
+        $user = $request->user();
 
         $request->session()->regenerate();
+        if ($request->user()->role == 'A') {
+            return view('Main.admin.my_admin_dash');
+            // echo "Welcome $user->name";
+        }
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if ($request->user()->role == 'B') {
+            // echo "Welcome Business $user->name";
+            return view('Main.business.my_busi_dash');
+        }
+
+        if ($request->user()->role == 'U') {
+            return view('Main.home');
+            // echo "Welcome $user->name";
+        }
     }
 
     /**

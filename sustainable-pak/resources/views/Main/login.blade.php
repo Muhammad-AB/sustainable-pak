@@ -8,9 +8,9 @@
         <div class="login-card">
             <div class="login-form">
                 <p>Enter Your Credentials</p>
-                <form action="" method="post">
+                <form action="{{route('login')}}" method="post">
                     @csrf
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="email" name="email" placeholder="email">
                     <input type="password" name="password" placeholder="Password">
                     <input type="submit" value="Login">
                 </form>
@@ -19,7 +19,7 @@
             <div class="sign-up-text">
                 <p>Don't have an account?</p>
                 <!-- <a href="{{ url('Signup/user-signup') }}">Sign up as a User</a> -->
-                <a href="{{ url('business_signup') }}">Sign up as a Business</a>
+                <a href="{{ route('business.signup') }}">Sign up as a Business</a>
             </div>
         </div>
     </div>

@@ -28,7 +28,7 @@
             </div>
 
             <div class="sign-up-text">
-                <a href="{{ url('login') }}">Login</a>
+                <a href="{{ route('login') }}">Login</a>
                 <!-- <a href="{{ url('user-signup.html') }}">Sign up as a User</a> -->
             </div>
         </div>

@@ -18,10 +18,25 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
         $guards = empty($guards) ? [null] : $guards;
+        $user =$request->user();
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if ($request->user()->role == 'A') {
+                    return redirect('/dashboard');
+                    // echo "Welcome $user->name";
+                }
+        
+                if ($request->user()->role == 'B') {
+                    // echo "Welcome Business $user->name";
+                    return redirect('/dashboard');
+                }
+        
+                if ($request->user()->role == 'U') {
+                    return redirect('/dashboard');
+                    // echo "Welcome $user->name";
+                }
+                // return redirect(RouteServiceProvider::HOME);
             }
         }
 
