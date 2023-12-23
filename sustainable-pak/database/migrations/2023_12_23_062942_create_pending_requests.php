@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('pending_requests', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role',['U', 'B', 'A']);
-            $table->rememberToken();
+            $table->string('description', 300);
+            $table->unsignedBigInteger('category_id');
+            $table->string('main_link', 255);
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('pending_requests');
     }
 };

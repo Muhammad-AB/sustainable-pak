@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -42,4 +43,64 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function businesses()
+    {
+        return $this->hasOne(Business::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'A';
+    }
+
+    public function isBusiness()
+    {
+        return $this->role === 'B';
+    }
+    public function isUser()
+    {
+        return $this->role === 'U';
+    }
+
 }
+// app/Models/User.php
+
+// namespace App\Models;
+
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Notifications\Notifiable;
+
+// class User extends Authenticatable
+// {
+//     use HasFactory, Notifiable;
+
+//     protected $fillable = [
+//         'name', 'email', 'password', 'role',
+//     ];
+
+//     protected $hidden = [
+//         'password', 'remember_token',
+//     ];
+
+//     public function isAdmin()
+//     {
+//         return $this->role === 'A';
+//     }
+
+//     public function isBusiness()
+//     {
+//         return $this->role === 'B';
+//     }
+
+//     public function pendingRequests()
+//     {
+//         return $this->hasMany(PendingRequest::class);
+//     }
+
+//     public function businesses()
+//     {
+//         return $this->hasMany(Business::class);
+//     }
+// }
