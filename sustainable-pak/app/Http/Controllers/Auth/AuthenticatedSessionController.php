@@ -30,13 +30,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         if ($request->user()->role == 'A') {
-            return view('Main.admin.my_admin_dash');
+            return redirect('home');
             // echo "Welcome $user->name";
         }
 
         if ($request->user()->role == 'B') {
             // echo "Welcome Business $user->name";
-            return view('Main.business.my_busi_dash');
+            return redirect('home');
         }
 
         if ($request->user()->role == 'U') {
