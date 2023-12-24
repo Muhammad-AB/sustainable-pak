@@ -40,7 +40,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         if ($request->user()->role == 'U') {
-            return view('Main.home');
+            return redirect('home');
             // echo "Welcome $user->name";
         }
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,18 @@ Route::get('/business/signup', function () {
 // Route::get('/mylogin', function () {
 //     return view('Main/login');
 // })->name('Main.login');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/home', function() {return view('Main.home');})->name('home');
+    Route::get('/allCategories', function() {return view('Main.my_all_categories');})->name('all.categories');
+    Route::get('/allBlogs', function() {return view('Main.my_all_blogs');})->name('all.blogs');
+    Route::get('/businesses', function() {return view('Main.my_business_list');})->name('business.list');
+    Route::get('/blog', function() {return view('Main.my_blog');})->name('blog');
+    Route::get('/about', function() {return view('Main.my_about');})->name('about');
+});
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

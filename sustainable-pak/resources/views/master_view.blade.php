@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <a href="{{ url('home') }}">
+        <a href="{{ route('home') }}">
             <div class="logo-name">
                 <img src="{{ asset('images/logo.png') }}" alt="SustainablePAK logo">
                 <h1>SustainablePAK</h1>
@@ -22,17 +22,17 @@
         <nav>
             @if(auth()->check())
             @if(auth()->user()->role == 'A')
-            <a href="">Dashboard</a> <!-- user signed in -->
+            <a href="{{ route('admin.dashboard') }}">Dashboard</a> <!-- user signed in -->
             @endif
             @if(auth()->user()->role == 'B')
-            <a href="">Dashboard</a> <!-- user signed in -->
+            <a href="{{ route('business.dashboard') }}">Dashboard</a> <!-- user signed in -->
             @endif
             @endif
-            <a href="{{ url('home') }}">Home</a>
-            <a href="">Businesses</a>
-            <a href="">Blog</a>
+            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('all.categories') }}">Businesses</a>
+            <a href="{{ route('all.blogs') }}">Blog</a>
             <!-- <a href="{{ url('resources.html') }}">Resources</a> -->
-            <a href="">About</a>
+            <a href="{{ route('about') }}">About</a>
 
             @if(auth()->check())
             <form method="POST" action="{{ route('logout') }}">
@@ -44,7 +44,7 @@
                 </a>
             </form>
             @else
-            <a href="{{ url('login') }}">Login</a> <!-- user not signed in -->
+            <a href="{{ route('login') }}">Login</a> <!-- user not signed in -->
             @endif
 
         </nav>
@@ -60,12 +60,12 @@
 
             <div class="footer-links">
                 <div class="footer-links-text">
-                    <a href="{{ url('home') }}">Home</a>
-                    <a href="">Sustainable Businesses</a>
-                    <a href="">Blog</a>
+                    <a href="{{ route('home') }}">Home</a>
+                    <a href="{{ route('all.categories') }}">Sustainable Businesses</a>
+                    <a href="{{ route('all.blogs') }}">Blog</a>
                     <!-- <a href="">Resources</a> -->
-                    <a href="">About</a>
-                    <a href="{{ url('login') }}">Login/Sign up</a>
+                    <a href="{{ route('about') }}">About</a>
+                    <a href="{{ route('login') }}">Login/Sign up</a>
                 </div>
 
                 <div class="contact">
