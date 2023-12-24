@@ -7,18 +7,18 @@
     <div class="login-container">
         <div class="login-card">
             <div class="login-form">
-                <p>Enter Your Credentials</p>
-                <form action="{{route('login')}}" method="post">
+                <p>Sign Up as a User</p>
+                <form action="" method="post">
                     @csrf
-                    <input type="email" name="email" placeholder="email">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="email" name="email" placeholder="Email">
                     <input type="password" name="password" placeholder="Password">
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Sign Up">
                 </form>
             </div>
 
             <div class="sign-up-text">
-                <p>Don't have an account?</p>
-                <a href="{{ route('user.signup') }}">Sign up as a User</a>
+                <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('business.signup') }}">Sign up as a Business</a>
             </div>
         </div>
