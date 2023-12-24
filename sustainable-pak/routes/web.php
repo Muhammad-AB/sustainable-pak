@@ -19,13 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/home', function () {
-//     return view('Main/home');
-// });
+Route::get('/home', function () {
+     return view('Main/home');
+});
 
 Route::get('/business/signup', function () {
     return view('Main/business_signup');
 })->name('business.signup');
+
+Route::get('/user/signup', function () {
+    return view('Main/user_signup');
+})->name('user.signup');
+
 
 // Route::get('/mylogin', function () {
 //     return view('Main/login');

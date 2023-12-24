@@ -29,7 +29,7 @@
 
             <div class="sign-up-text">
                 <a href="{{ route('login') }}">Login</a>
-                <!-- <a href="{{ url('user-signup.html') }}">Sign up as a User</a> -->
+                <a href="{{ route('user.signup') }}">Sign up as a User</a>
             </div>
         </div>
     </div>
