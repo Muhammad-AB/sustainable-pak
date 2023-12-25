@@ -25,7 +25,7 @@
                     <div style="color: red;">{{ $message }}</div>
                     @enderror
 
-                    <input type="password" name="password_confirmation" placeholder="Password" required>
+                    <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
                     <input type="submit" value="Sign Up">
                 </form>
             </div>

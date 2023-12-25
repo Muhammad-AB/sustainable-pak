@@ -5,7 +5,8 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BusinessController;
-
+use App\Http\Controllers\CommonController;
+use App\Models\Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +34,7 @@ Route::middleware('guest')->group(function () {
     Route::get('register/user', [RegisteredUserController::class, 'create'])->name('register.user');
 
     Route::post('register/user', [RegisteredUserController::class, 'store']);
-    
+
     Route::get('register/business', [BusinessController::class, 'create'])->name('register.business');
 
     Route::post('register/business', [BusinessController::class, 'store']);
@@ -54,21 +55,28 @@ Route::middleware('guest')->group(function () {
 // })->name('Main.login');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', function () {
-        return view('Main.home');
-    })->name('home');
-    Route::get('/allCategories', function () {
-        return view('Main.my_all_categories');
-    })->name('all.categories');
+
+    Route::get('/home', [CommonController::class, 'home'])->name('home');
+
+    Route::get('/allCategories', [CommonController::class, 'allCategories'])->name('all.categories');
+    // Route::get('/allCategories', function () {
+    //     $categories = Category::all();
+    //     return view('Main.my_all_categories', compact('categories'));
+    // })->name('all.categories');
+
+    // Route::get('/allCategories', [CommonController::class, 'allCategories'])->name('all.categories');
     Route::get('/allBlogs', function () {
         return view('Main.my_all_blogs');
     })->name('all.blogs');
-    Route::get('/businesses', function () {
+
+    Route::get('/businesses/{id?}', function ($id=null) {
         return view('Main.my_business_list');
     })->name('business.list');
-    Route::get('/blog', function () {
+
+    Route::get('/blog/{id?}', function ($id=null) {
         return view('Main.my_blog');
     })->name('blog');
+
     Route::get('/about', function () {
         return view('Main.my_about');
     })->name('about');
