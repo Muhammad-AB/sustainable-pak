@@ -101,3 +101,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('/business_dashboard', function () {
+      return view('Main.business.business_dashboard');
+ });
+
+ Route::get('/businessedit', function () {
+    return view('Main.business.business_edit_details');
+});
