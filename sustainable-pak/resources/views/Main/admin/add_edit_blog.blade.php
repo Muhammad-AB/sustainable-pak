@@ -7,8 +7,8 @@
     <div class="dashboard-container">
         <div class="dashboard-card edit-blog-card">
             <div class="dashboard-header">
-                @if(!empty($blog->title))
-                    <h2>Edit {{ $blog->title }}</h2>
+                @if(!empty($blog->name))
+                    <h2>Edit {{ $blog->name }}</h2>
                 @else
                     <h2>Add Blog</h2>
                 @endif
@@ -18,12 +18,12 @@
                     @csrf
 
                     <label for="blog-title">Blog Title:</label>
-                    <input class="blog-title" type="text" id="blog-title" name="blog-title" value="{{ $blog->title ?? '' }}" required>
+                    <input class="blog-title" type="text" id="name" name="name" value="{{ $blog->name ?? '' }}" required>
 
                     <label for="blog-content">Blog Content:</label>
-                    <textarea class="blog-content" id="blog-content" name="blog-content" rows="50" required>{{ $blog->content ?? '' }}</textarea>
+                    <textarea class="blog-content" id="content" name="content" rows="50" required>{{ $blog->content ?? '' }}</textarea>
 
-                    @if(!empty($blog->title))
+                    @if(!empty($blog->name))
                         <button class="button" type="submit">Update Blog</button>
                     @else
                         <button class="button" type="submit">Add Blog</button>

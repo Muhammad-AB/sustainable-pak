@@ -95,7 +95,15 @@ Route::middleware('auth', 'admin')->group(function () {
     // Route::get('/admin/dashboard', function () {
     //     return view('Main.admin.my_admin_dash');
     // })->name('admin.dashboard');
-    Route::get('/admin/pendingRequests', [AdminController::class, 'pendingRequests'])->name('admin.requests');
+    Route::get('/admin/pending/requests', [AdminController::class, 'pendingRequests'])->name('admin.requests');
+    Route::get('/admin/businesses', [AdminController::class, 'businesses'])->name('admin.businesses');
+
+    Route::get('/admin/add/blog/{id?}', [AdminController::class, 'editBlog'])->name('admin.addBlog');
+    Route::post('/admin/add/blog/{id?}', [AdminController::class, 'updateBlog'])->name('admin.updateBlog');
+
+    Route::get('/admin/edit/about', [AdminController::class, 'editAbout'])->name('admin.about');
+    Route::post('/admin/edit/about', [AdminController::class, 'updateAbout'])->name('admin.updateAbout');
+    // Route::patch('/admin/edit/about', [AdminController::class, 'editAbout'])->name('admin.updateAbout');
 });
 
 Route::middleware('auth', 'business')->group(function () {
