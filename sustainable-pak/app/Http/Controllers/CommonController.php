@@ -19,8 +19,8 @@ class CommonController extends Controller
 
     public function allCategories(Request $request)
     {
-        $categories = Category::all();
-        return view('Main.my_all_categories', ['categories' => $categories]);
+        $categories = Category::paginate(5);
+        return view('Main.categories', ['categories' => $categories]);
     }
 
     public function allBlogs(Request $request)
@@ -43,7 +43,7 @@ class CommonController extends Controller
 
     public function about(Request $request)
     {
-        $about = About::all();
-        return view('Main.my_about', ['about' => $about]);
+        $about = About::first();
+        return view('Main.about', ['about' => $about]);
     }
 }

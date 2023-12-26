@@ -8,9 +8,65 @@
     <title>SustainablePAK</title>
     <link rel="icon" href="{{ asset('images/icon.ico') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- <style>
+        .alert {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            z-index: 1000;
+            /* Set a high z-index to ensure it's in front of all elements */
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            display: none;
+            /* Initially hide the alert */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Display the success message
+            var successMessage = document.createElement('div');
+            successMessage.className = 'alert';
+            successMessage.innerHTML = '{{ session("success") }}';
+            document.body.appendChild(successMessage);
+
+            // Automatically hide the success message after 5 seconds
+            setTimeout(function() {
+                successMessage.style.display = 'none';
+            }, 5000);
+        });
+    </script> -->
+    <style>
+        .alert-success {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* height: 30%; */
+            z-index: 1000;
+            /* Set a high z-index value to ensure it's in front of other elements */
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
+    @if(session('success'))
+    <div class="alert alert-success" style="background-color: #4CAF50; color: white; padding: 10px;">
+        {{ session('success') }}
+    </div>
+    @endif
+    <!-- @if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+    @endif -->
     <header>
         <a href="{{ route('home') }}">
             <div class="logo-name">

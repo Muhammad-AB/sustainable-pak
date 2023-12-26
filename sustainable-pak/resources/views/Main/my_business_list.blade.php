@@ -8,8 +8,9 @@ Business Lists
 <ul>
     @foreach($businesses as $business)
     <li>
-        <strong>{{ $business->user->name }}</strong>
-        <p>{{ $business->description }}</p>
+        <h3>{{ $business->user->name }}</h3>
+        <p>Detail: {{ $business->description }}</p>
+        <p>Category: {{ $business->category->name }}</p>
         <!-- Add more fields as needed -->
 
         {{-- Additional business details --}}
