@@ -5,6 +5,7 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommonController;
 use App\Models\Category;
 use App\Models\Business;
@@ -90,9 +91,11 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('auth', 'admin')->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('Main.admin.my_admin_dash');
-    })->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    // Route::get('/admin/dashboard', function () {
+    //     return view('Main.admin.my_admin_dash');
+    // })->name('admin.dashboard');
+    Route::get('/admin/pendingRequests', [AdminController::class, 'pendingRequests'])->name('admin.requests');
 });
 
 Route::middleware('auth', 'business')->group(function () {
