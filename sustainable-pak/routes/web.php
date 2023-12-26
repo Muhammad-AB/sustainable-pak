@@ -122,3 +122,7 @@ require __DIR__ . '/auth.php';
 Route::get('/pb', function () {
          return view('Main.admin.pending_businesses');
      });
+
+Route::get('/abt', function () {
+        return view('Main.about');
+    });
