@@ -33,10 +33,10 @@
 
         @foreach($categories->slice(0, 3) as $category)
         <div class="individual-element-container">
-            <a href="{{ route('business.list', ['categoryId' => $category->id]) }}">
+            <a href="{{ route('business.list', ['id' => $category->id]) }}">
                 <img src="{{ asset($category->img_link) }}" alt="{{ $category->name }}">
             </a>
-            <a href="{{ route('business.list', ['categoryId' => $category->id]) }}">
+            <a href="{{ route('business.list', ['id' => $category->id]) }}">
                 {{ $category->name }}
             </a>
         </div>
@@ -71,10 +71,10 @@
         </div> -->
         @foreach($blogs->slice(0, 3) as $blog)
         <div class="individual-element-container">
-            <a href="{{ route('blog', ['blogId' => $blog->id]) }}">
+            <a href="{{ route('blog', ['id' => $blog->id]) }}">
                 <img src="{{ asset($categories[1]->img_link) }}" alt="{{ $blog->name }}">
             </a>
-            <a href="{{ route('blog', ['blogId' => $blog->id]) }}">
+            <a href="{{ route('blog', ['id' => $blog->id]) }}">
                 {{ $blog->name }}
             </a>
         </div>

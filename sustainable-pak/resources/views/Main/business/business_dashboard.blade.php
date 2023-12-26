@@ -11,9 +11,9 @@
             </div>
             <div class="dashboard-body">
 
-                @if($business->name)
-                    <p class="card-text"><strong>Business Name:</strong></p>
-                    <p>{{ $business->name }}</p>
+                @if($business->user->name)
+                    <p class="card-text"><strong>Business Name: </strong></p>
+                    <p>{{ $business->user->name }}</p>
                 @else
                     <p class="card-text"><strong>Business Name:</strong></p>
                     <p>None</p>
@@ -29,7 +29,7 @@
 
                 @if($business->category)
                     <p class="card-text"><strong>Category:</strong></p>
-                    <p>{{ $business->category }}</p>
+                    <p>{{ $business->category->name }}</p>
                 @else
                     <p class="card-text"><strong>Category:</strong></p>
                     <p>None</p>
@@ -37,47 +37,47 @@
 
                 @if($business->main_link)
                     <p class="card-text"><strong>Main Link:</strong></p>
-                    <p><a href="{{ $main_link }}">{{ $business->main_link }}</a></p>
+                    <p><a href="{{ $business->main_link  }}">{{ $business->main_link }}</a></p>
                 @else
                     <p class="card-text"><strong>Main Link:</strong></p>
                     <p>None</p>
                 @endif
 
-                @if($business->website)
+                @if($business->web_link)
                     <p class="card-text"><strong>Website:</strong></p>
-                    <p><a href="{{ $website }}">{{ $business->website }}</a></p>
+                    <p><a href="{{ $business->web_link }}">{{ $business->web_link }}</a></p>
                 @else
                     <p class="card-text"><strong>Website:</strong></p>
                     <p>None</p>
                 @endif
 
-                @if($business->facebook)
+                @if($business->fb_link)
                     <p class="card-text"><strong>Facebook:</strong></p>
-                    <p><a href="{{ $facebook }}">{{ $business->facebook }}</a></p>
+                    <p><a href="{{ $business->fb_link }}">{{ $business->fb_link }}</a></p>
                 @else
                     <p class="card-text"><strong>Facebook:</strong></p>
                     <p>None</p>
                 @endif
 
-                @if($business->instagram)
+                @if($business->insta_link)
                     <p class="card-text"><strong>Instagram:</strong></p>
-                    <p><a href="{{ $instagram }}">{{ $business->instagram }}</a></p>
+                    <p><a href="{{ $business->insta_link }}">{{ $business->insta_link }}</a></p>
                 @else
                     <p class="card-text"><strong>Instagram:</strong></p>
                     <p>None</p>
                 @endif
 
-                @if($business->linkedin)
+                @if($business->lin_link)
                     <p class="card-text"><strong>LinkedIn:</strong></p>
-                    <p><a href="{{ $linkedin }}">{{ $business->linkedin }}</a></p>
+                    <p><a href="{{ $business->lin_link }}">{{ $business->lin_link }}</a></p>
                 @else
                     <p class="card-text"><strong>LinkedIn:</strong></p>
                     <p>None</p>
                 @endif
 
-                @if($business->twitter)
+                @if($business->twitter_link)
                     <p class="card-text"><strong>Twitter:</strong></p>
-                    <p><a href="{{ $twitter }}">{{ $business->twitter }}</a></p>
+                    <p><a href="{{ $business->twitter_link }}">{{ $business->twitter_link }}</a></p>
                 @else
                     <p class="card-text"><strong>Twitter:</strong></p>
                     <p>None</p>
@@ -91,13 +91,6 @@
                     <p>None</p>
                 @endif
 
-                @if($business->product1_link)
-                    <p class="card-text"><strong>Product 1 Link:</strong></p>
-                    <p><a href="{{ $business->product3_link }}">{{ $business->product1_link }}</a></p>
-                @else
-                    <p class="card-text"><strong>Product 1 Link:</strong></p>
-                    <p>None</p>
-                @endif
 
                 @if($business->product2)
                     <p class="card-text"><strong>Product 2:</strong></p>
@@ -107,13 +100,6 @@
                     <p>None</p>
                 @endif
 
-                @if($business->product2_link)
-                    <p class="card-text"><strong>Product 2 Link:</strong></p>
-                    <p><a href="{{ $business->product2_link }}">{{ $business->product2_link }}</a></p>
-                @else
-                    <p class="card-text"><strong>Product 2 Link:</strong></p>
-                    <p>None</p>
-                @endif
 
                 @if($business->product3)
                     <p class="card-text"><strong>Product 3:</strong></p>
@@ -123,15 +109,15 @@
                     <p>None</p>
                 @endif
 
-                @if($business->product3_link)
-                    <p class="card-text"><strong>Product 3 Link:</strong></p>
-                    <p><a href="{{ $business->product3_link }}">{{ $business->product3_link }}</a></p>
+                @if($business->product3)
+                    <!-- <p class="card-text"><strong>Product 3 Link:</strong></p>
+                    <p><a href="{{ $business->product3 }}">{{ $business->product3 }}</a></p> -->
                 @else
-                    <p class="card-text"><strong>Product 3 Link:</strong></p>
-                    <p>None</p>
+                    <!-- <p class="card-text"><strong>Product 3 Link:</strong></p>
+                    <p>None</p> -->
                 @endif
 
-                <button class="button"><a href="" class="">Edit Details</a></button>
+                <button class="button"><a href="{{ route('business.editDetails') }}" class="">Edit Details</a></button>
             </div>
         </div>
     </div>

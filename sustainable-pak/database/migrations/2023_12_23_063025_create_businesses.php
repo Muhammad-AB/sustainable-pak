@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('insta_link', 255)->nullable();
             $table->string('twitter_link', 255)->nullable();
             $table->string('lin_link', 255)->nullable();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->timestamps();
 
             

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
+use App\Models\Category;
 use App\Models\PendingRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -23,7 +24,9 @@ class BusinessController extends Controller
      */
     public function create(): View
     {
-        return view('Main.business_signup');
+        $categories = Category::all();
+
+        return view('Main.business_signup', ['categories' => $categories]);
     }
 
     /**
@@ -39,21 +42,6 @@ class BusinessController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class, 'unique:' . PendingRequest::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $categoryId = null;
-        $categoryName = $request->category;
-
-        // Retrieve the category with the given name
-        $category = \App\Models\Category::where('name', $categoryName)->first();
-
-        // Check if the category exists
-        if ($category) {
-            $categoryId = $category->id;
-            // Now $categoryId contains the id of the category with the given name
-        } else {
-            $categoryId = 4;
-            // Handle the case where the category doesn't exist
-            // Maybe return an error response or set $categoryId to null
-        }
 
         $user = PendingRequest::create([
             'name' => $request->name,
@@ -61,7 +49,7 @@ class BusinessController extends Controller
             'password' => Hash::make($request->password),
             // 'role' => 'B',
             'description' => $request->description,
-            'category_id' => $categoryId,
+            'category_id' => $request->category,
             'main_link' => $request->main_link,
         ]);
 
@@ -72,5 +60,62 @@ class BusinessController extends Controller
         echo "Your Request has been Transfered Successfully. Please Wait for approval";
 
         // return redirect('business/pendingRequest');
+    }
+
+    public function dashboard(Request $request)
+    {
+        // $business = Business::findOrFail($id);
+        // $business1 = User::findOrFail($id)->businesses;
+        // if (auth()->user()->id !== $business->user_id) {
+        //     abort(403, 'Unauthorized access');
+        // }
+
+        // Retrieve the business associated with the authenticated user
+        $business = $request->user()->businesses;
+
+        // If the user doesn't have a business, handle accordingly
+        if (!$business) {
+            abort(404, 'Business details not found');
+        }
+
+        return view('Main.business.business_dashboard', ['business' => $business]);
+    }
+
+    public function editDetails(Request $request)
+    {
+        // $business = Business::findOrFail($id);
+        // $business = User::findOrFail($id)->businesses;
+        $business = $request->user()->businesses;
+        $categories = Category::all();
+
+        // Check if the authenticated user owns the business
+        if (!$business) {
+            abort(404, 'Business details not found');
+        }
+
+        return view('Main.business.business_edit_details', ['business' => $business, 'categories' => $categories]);
+    }
+    public function saveDetails(Request $request)
+    {
+        $business = $request->user()->businesses->first();
+        if (!$business) {
+            abort(404, 'Business details not found');
+        }
+
+        $business->update([
+            'description' => $request->description,
+            'category_id' => $request->category,
+            'main_link' => $request->main_link,
+            'web_link' => $request->website,
+            'fb_link' => $request->facebook,
+            'insta_link' => $request->instagram,
+            'lin_link' => $request->linkedin,
+            'twitter_link' => $request->twitter,
+            'product1' => $request->product1,
+            'product2' => $request->product2,
+            'product3' => $request->product3,
+        ]);
+
+        return redirect('business/dashboard');
     }
 }

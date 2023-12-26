@@ -15,13 +15,13 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'role' => 'A',
-            'password' => Hash::make('adminpass'),
-            'remember_token' => Str::random(10),
-        ]);
+        // DB::table('users')->insert([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@gmail.com',
+        //     'role' => 'A',
+        //     'password' => Hash::make('adminpass'),
+        //     'remember_token' => Str::random(10),
+        // ]);
         // DB::table('users')->insert([
         //     'name' => 'Admin3',
         //     'email' => 'admin3@gmail.com',
@@ -29,16 +29,16 @@ class UserSeeder extends Seeder
         //     'password' => bcrypt('password'),
         //     'remember_token' => Str::random(10),
         // ]);
+        // DB::table('users')->insert([
+        //     'name' => 'user1',
+        //     'email' => 'user1@hotmail.com',
+        //     'role' => 'U',
+        //     'password' => bcrypt('userpass'),
+        //     'remember_token' => Str::random(10),
+        // ]);
         DB::table('users')->insert([
-            'name' => 'user1',
-            'email' => 'user1@hotmail.com',
-            'role' => 'U',
-            'password' => bcrypt('userpass'),
-            'remember_token' => Str::random(10),
-        ]);
-        DB::table('users')->insert([
-            'name' => 'business1',
-            'email' => 'business1@hotmail.com',
+            'name' => 'business2',
+            'email' => 'business2@hotmail.com',
             'role' => 'B',
             'password' => bcrypt('busipass'),
             'remember_token' => Str::random(10),

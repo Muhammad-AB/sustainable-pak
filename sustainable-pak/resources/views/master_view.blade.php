@@ -27,19 +27,17 @@
             @if(auth()->user()->role == 'B')
             <a href="{{ route('business.dashboard') }}">Dashboard</a> <!-- user signed in -->
             @endif
-            @endif
+
             <a href="{{ route('home') }}">Home</a>
             <a href="{{ route('all.categories') }}">Businesses</a>
             <a href="{{ route('all.blogs') }}">Blog</a>
             <!-- <a href="{{ url('resources.html') }}">Resources</a> -->
             <a href="{{ route('about') }}">About</a>
 
-            @if(auth()->check())
+
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-
-                <a :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                <a :href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">
                     {{ __('Log Out') }}
                 </a>
             </form>

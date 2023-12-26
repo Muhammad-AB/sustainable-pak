@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\CommonController;
 use App\Models\Category;
+use App\Models\Business;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +23,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('Main/home');
-});
+// Route::get('/home', function () {
+//     return view('Main/home');
+// });
 
 // Route::get('/login', function () {
 //      return view('Main.login');
@@ -58,29 +59,35 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/home', [CommonController::class, 'home'])->name('home');
 
-    Route::get('/allCategories', [CommonController::class, 'allCategories'])->name('all.categories');
+    Route::get('/Categories', [CommonController::class, 'allCategories'])->name('all.categories');
     // Route::get('/allCategories', function () {
     //     $categories = Category::all();
     //     return view('Main.my_all_categories', compact('categories'));
     // })->name('all.categories');
 
-    // Route::get('/allCategories', [CommonController::class, 'allCategories'])->name('all.categories');
-    Route::get('/allBlogs', function () {
-        return view('Main.my_all_blogs');
-    })->name('all.blogs');
+    Route::get('/Blogs', [CommonController::class, 'allBlogs'])->name('all.blogs');
+    // Route::get('/allBlogs', function () {
+    //     return view('Main.my_all_blogs');
+    // })->name('all.blogs');
 
-    Route::get('/businesses/{id?}', function ($id=null) {
-        return view('Main.my_business_list');
-    })->name('business.list');
+    Route::get('/businesses/{id}', [CommonController::class, 'businesses'])->name('business.list');
+    // Route::get('/businesses/{id?}', function ($id = null) {
+    //     return view('Main.my_business_list');
+    // })->name('business.list');
 
-    Route::get('/blog/{id?}', function ($id=null) {
-        return view('Main.my_blog');
-    })->name('blog');
+    Route::get('/blog/{id?}', [CommonController::class, 'blog'])->name('blog');
+    // Route::get('/blog/{id?}', function ($id = null) {
+    //     return view('Main.my_blog');
+    // })->name('blog');
 
-    Route::get('/about', function () {
-        return view('Main.my_about');
-    })->name('about');
+    Route::get('/about', [CommonController::class, 'about'])->name('about');
+    // Route::get('/about', function () {
+    //     return view('Main.my_about');
+    // })->name('about');
 });
+
+
+
 
 Route::middleware('auth', 'admin')->group(function () {
     Route::get('/admin/dashboard', function () {
@@ -89,13 +96,15 @@ Route::middleware('auth', 'admin')->group(function () {
 });
 
 Route::middleware('auth', 'business')->group(function () {
-    Route::get('/business/dashboard', function () {
-        return view('Main.business.my_busi_dash');
-    })->name('business.dashboard');
+
+    Route::get('/business/dashboard', [BusinessController::class, 'dashboard'])->name('business.dashboard');
+    // {
+    //     $business = Business::find($id);
+    //     return view('Main.business.business_dashboard', ['business' => $business]);
+    // })->name('business.dashboard');
+    Route::get('/business/editDetails', [BusinessController::class, 'editDetails'])->name('business.editDetails');
+    Route::post('/business/editDetails', [BusinessController::class, 'saveDetails'])->name('business.saveDetails');
 });
-
-
-
 
 
 Route::get('/dashboard', function () {
@@ -109,11 +118,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-
-Route::get('/business_dashboard', function () {
-      return view('Main.business.business_dashboard');
- });
-
- Route::get('/businessedit', function () {
-    return view('Main.business.business_edit_details');
-});

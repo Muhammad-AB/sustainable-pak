@@ -35,7 +35,7 @@ class CommonController extends Controller
         return view('Main.my_business_list', ['businesses' => $businesses]);
     }
 
-    public function blog(Request $request, $id)
+    public function blog(Request $request, $id = null)
     {
         $blog = Blog::find($id);
         return view('Main.my_blog', ['blog' => $blog]);

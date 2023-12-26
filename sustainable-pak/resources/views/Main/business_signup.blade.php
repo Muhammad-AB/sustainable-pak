@@ -7,7 +7,7 @@
     <div class="login-container">
         <div class="login-card">
             <div class="login-form">
-            <h2 style="text-align: center;">Business Sign Up</h2>
+                <h2 style="text-align: center;">Business Sign Up</h2>
                 <form action="{{ route('register.business') }}" method="post">
                     @csrf
                     <input type="text" name="name" placeholder="Business Name" required>
@@ -27,12 +27,21 @@
 
                     <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
 
-                    <label for="category">Choose a Category:</label>
+                    <!-- <label for="category">Choose a Category:</label>
                     <select name="category" id="category" required>
                         <option value="Zero Waste">Zero Waste</option>
                         <option value="Sustainable Energy">Sustainable Energy</option>
                         <option value="Sustainable Clothing">Sustainable Clothing</option>
                         <option value="Other">Other</option>
+                    </select> -->
+                    
+                    <label for="category">Choose a Category:</label>
+                    <select name="category" id="category" required>
+                        @foreach($categories as $category)
+                        <option value="{{ $category->id }}" {{ old('category') == $category ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                        @endforeach
                     </select>
 
                     <input type="text" name="description" placeholder="Description/Product Details" required>
