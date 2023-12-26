@@ -5,7 +5,6 @@ use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BusinessController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommonController;
 use App\Models\Category;
 use App\Models\Business;
@@ -91,19 +90,9 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('auth', 'admin')->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    // Route::get('/admin/dashboard', function () {
-    //     return view('Main.admin.my_admin_dash');
-    // })->name('admin.dashboard');
-    Route::get('/admin/pending/requests', [AdminController::class, 'pendingRequests'])->name('admin.requests');
-    Route::get('/admin/businesses', [AdminController::class, 'businesses'])->name('admin.businesses');
-
-    Route::get('/admin/add/blog/{id?}', [AdminController::class, 'editBlog'])->name('admin.addBlog');
-    Route::post('/admin/add/blog/{id?}', [AdminController::class, 'updateBlog'])->name('admin.updateBlog');
-
-    Route::get('/admin/edit/about', [AdminController::class, 'editAbout'])->name('admin.about');
-    Route::post('/admin/edit/about', [AdminController::class, 'updateAbout'])->name('admin.updateAbout');
-    // Route::patch('/admin/edit/about', [AdminController::class, 'editAbout'])->name('admin.updateAbout');
+    Route::get('/admin/dashboard', function () {
+        return view('Main.admin.my_admin_dash');
+    })->name('admin.dashboard');
 });
 
 Route::middleware('auth', 'business')->group(function () {
@@ -129,3 +118,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('/pb', function () {
+         return view('Main.admin.pending_businesses');
+     });
