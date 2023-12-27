@@ -669,6 +669,10 @@ textarea {
     width: 70%;
 }
 
+.dashboard-body .blog-content {
+    margin-top: 10px;
+}
+
 
 /* Pending Business Requests */
 
@@ -780,4 +784,14 @@ textarea {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+}
+
+.about-content {
+    padding: 10px;
+    background-color: white;
+    font-size: larger;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    width: 90%;
 }

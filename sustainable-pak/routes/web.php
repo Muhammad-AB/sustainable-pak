@@ -140,3 +140,16 @@ Route::get('/pb', function () {
 Route::get('/abt', function () {
         return view('Main.about');
     });
+
+    Route::get('/blg', function () {
+        return view('Main.blog');
+    });
+
+    Route::get('/blgs', function () {
+        return view('Main.all_blogs');
+    });
+    Route::get('/edtabt', function () {
+        return view('Main.admin.edit_about');
+    });    Route::get('/edtblg', function () {
+        return view('Main.admin.add_edit_blog');
+    });
