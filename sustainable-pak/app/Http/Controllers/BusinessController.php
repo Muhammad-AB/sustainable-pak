@@ -97,7 +97,7 @@ class BusinessController extends Controller
     }
     public function saveDetails(Request $request)
     {
-        $business = $request->user()->businesses->first();
+        $business = $request->user()->businesses;
         if (!$business) {
             abort(404, 'Business details not found');
         }
