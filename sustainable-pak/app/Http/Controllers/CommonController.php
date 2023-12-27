@@ -26,7 +26,7 @@ class CommonController extends Controller
     public function allBlogs(Request $request)
     {
         $blogs = Blog::all();
-        return view('Main.my_all_blogs', ['blogs' => $blogs]);
+        return view('Main.all_blogs', ['blogs' => $blogs]);
     }
 
     public function businesses($id)
@@ -38,7 +38,9 @@ class CommonController extends Controller
     public function blog(Request $request, $id = null)
     {
         $blog = Blog::find($id);
-        return view('Main.my_blog', ['blog' => $blog]);
+        // Retrieve 3 random blog suggestions excluding the current blog
+        $blogSuggestions = Blog::whereNotIn('id', [$id])->inRandomOrder()->take(3)->get();
+        return view('Main.blog', ['blog' => $blog, 'blogSuggestions' => $blogSuggestions]);
     }
 
     public function about(Request $request)

@@ -81,8 +81,8 @@ class AdminController extends Controller
             ]);
         } else {
             $blog->update([
-                'name' => $request->input('name'),
-                'content' => $request->input('content'),
+                'name' => $request->name,
+                'content' => $request->content,
             ]);
         }
         return redirect()->route('blog', ['id' => $blog->id])->with('success', "Blog $blog->name updated successfully!");

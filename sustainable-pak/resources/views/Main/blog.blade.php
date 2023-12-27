@@ -4,37 +4,56 @@
 
 <main>
     <div class="blog-content">
-        <h2>{{ $blog->title ?? 'Blog Title' }}</h2>
+        <h2>{{ $blog->name ?? 'Blog Title' }}</h2>
 
         @if(isset($blog->content))
-            {!! $blog->content !!}
+        {!! $blog->content !!}
         @else
-            <p>No content available for this blog.</p>
+        <p>No content available for this blog.</p>
         @endif
     </div>
-    <p>Created at: {{ $blog->time_created }}</p>
+    <p>Created at: {{ $blog->updated_at->format('F j, Y') }}</p>
 </main>
 
+<!-- @if(auth()->user()->role == 'A')
+<div class="admin-actions">
+    <button>Edit Blog</button>
+    <button>Delete Blog</button>
+</div>
+@endif -->
 @if(auth()->user()->role == 'A')
-    <div class="admin-actions">
-            <button>Edit Blog</button>
-            <button>Delete Blog</button>
-    </div>
+<div class="admin-actions">
+    <form action="{{ route('admin.addBlog', ['id' => $blog->id]) }}" method="post">
+        @csrf
+        <button type="submit">Edit Blog</button>
+    </form>
+
+    <form action="{{-- route('admin.deleteBlog', ['id' => $blog->id]) --}}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Delete Blog</button>
+    </form>
+</div>
 @endif
 
-<hr/>
+<hr />
 
 <div class="blog-suggestion-container">
     <h3>Consider checking these out next:</h3>
 
-    <div class="element-container">
-        <div class="individual-element-container">
-            <a href="{{ url('blog2') }}">How to Reduce<br/>Food Waste</a>
-        </div>
 
+    <div class="element-container">
+        @foreach($blogSuggestions->slice(0, 3) as $blog)
         <div class="individual-element-container">
-            <a href="{{ url('blog3') }}">Why You Should Use<br/>Bamboo Toothbrushes</a>
+            <a href="{{ route('blog', ['id' => $blog->id]) }}">
+                <img src="https://www.sympatex.com/wp-content/uploads/2022/06/top10-blogs-nachhaltigkeit.jpg" alt="{{ $blog->name }}">
+            </a>
+            <a href="{{ route('blog', ['id' => $blog->id]) }}">
+                {{ $blog->name }}
+            </a>
         </div>
+        @endforeach
+
     </div>
 </div>
 
