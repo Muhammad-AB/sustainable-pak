@@ -116,11 +116,16 @@ Route::middleware('auth', 'business')->group(function () {
 //         return view('Main.blog');
 //     });
 
-//     Route::get('/blgs', function () {
-//         return view('Main.all_blogs');
-//     });
-//     Route::get('/edtabt', function () {
-//         return view('Main.admin.edit_about');
-//     });    Route::get('/edtblg', function () {
-//         return view('Main.admin.add_edit_blog');
-//     });
+    Route::get('/blgs', function () {
+        return view('Main.all_blogs');
+    });
+    Route::get('/edtabt', function () {
+        return view('Main.admin.edit_about');
+    });    
+    Route::get('/edtblg', function () {
+        return view('Main.admin.add_edit_blog');
+    });
+
+    Route::get('/all', function () {
+        return view('Main.all_businesses');
+    });
