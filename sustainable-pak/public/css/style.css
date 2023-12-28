@@ -787,3 +787,38 @@ textarea {
     padding: 20px;
 }
 
+.business-card {
+    width: 70%;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid rgb(67, 62, 59);
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.business-card p {
+    margin-top: -5px;
+}
+
+.business-waiting-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.business-waiting-container p {
+    font-size: larger;
+    margin-bottom: 30px;
+}
+
+.business-waiting-container h2 {
+    margin-bottom: 10px;
+}
+
+.business-waiting-container img {
+    width: 300px;
+    margin-top: 80px;
+}
