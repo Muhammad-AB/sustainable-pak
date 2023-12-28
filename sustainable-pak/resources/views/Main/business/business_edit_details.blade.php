@@ -9,24 +9,15 @@
             <div class="dashboard-header">
                 <h2 class="" style="text-align: center;">Edit Details</h2>
             </div>
-            <div class="dashboard-body">
+            <div class="dashboard-body edit-business">
                 <h2>{{ $business->user->name ?? '' }}</h2>
                 <form action="{{ route('business.saveDetails') }}" method="post">
                     @csrf
 
-                    <!-- <label for="name">Business Name:</label>
-                    <input type="text" id="name" name="name" value="{{ $business->user->name ?? '' }}" required> -->
-
                     <label for="description">Description:</label>
-                    <textarea id="description" name="description" required>{{ $business->description ?? '' }}</textarea>
+                    <textarea id="description" name="description" rows="8" required>{{ $business->description ?? '' }}</textarea>
 
                     <label for="category">Category:</label>
-                    <!-- <select name="category">
-                        <option value="Zero Waste" {{ $business->category->name == 'Zero Waste' ? 'selected' : '' }}>Zero Waste</option>
-                        <option value="Sustainable Energy" {{ $business->category->name == 'Sustainable Energy' ? 'selected' : '' }}>Sustainable Energy</option>
-                        <option value="Sustainable Clothing" {{ $business->category->name == 'Sustainable Clothing' ? 'selected' : '' }}>Sustainable Clothing</option>
-                        <option value="Other" {{ $business->category->name == 'Other' ? 'selected' : '' }}>Other</option>
-                    </select> -->
                     <select name="category">
                         @foreach($categories as $category)
                         <option value="{{ $category->id }}" {{ $business->category->name == $category ? 'selected' : '' }}>
