@@ -848,3 +848,13 @@ textarea {
     padding-left: 10px;
     margin-bottom: 20px;
 }
+
+.edit-about-content {
+    padding: 10px;
+    background-color: white;
+    font-size: larger;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    width: 90%;
+}

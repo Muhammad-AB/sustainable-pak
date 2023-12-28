@@ -16,8 +16,8 @@
                     <label for="about-title">Title:</label>
                     <input class="about-title" type="text" id="name" name="name" value="{{ $about->name ?? '' }}" required>
 
-                    <label for="about-content">Content:</label>
-                    <textarea class="about-content" id="content" name="content" rows="20" required>{{ $about->content ?? '' }}</textarea>
+                    <label for="edit-about-content">Content:</label>
+                    <textarea class="edit-about-content" id="content" name="content" rows="20" required>{{ $about->content ?? '' }}</textarea>
 
                     <button class="button" type="submit">Update About</button>
                 </form>
