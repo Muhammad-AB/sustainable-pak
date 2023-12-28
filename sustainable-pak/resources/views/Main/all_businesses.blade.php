@@ -47,13 +47,15 @@
                         <a href="{{ $business->linkedin_link }}"><img src="{{ asset('images/icons/linkedin-green.png') }}" alt="linkedin"></a>
                     @endif
                 </div>
-
-                <div class="admin-actions">
-                    <form action="" method="post">
-                        @csrf
-                        <button type="submit">Delete Business</button>
-                    </form>
-                </div>
+                
+                @if(auth()->user()->role == 'A')
+                    <div class="admin-actions">
+                        <form action="" method="post">
+                            @csrf
+                            <button type="submit">Delete Business</button>
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
     @endforeach
