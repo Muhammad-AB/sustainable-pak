@@ -129,3 +129,7 @@ Route::middleware('auth', 'business')->group(function () {
     Route::get('/all', function () {
         return view('Main.all_businesses');
     });
+
+    Route::get('/wait', function () {
+        return view('Main.business.business_waiting');
+    });

@@ -1,13 +1,14 @@
 @extends('master_view')
 
 @section('section')
+<body class="background-color">
 
 <div class="businesses-container">
-    <h2>$category->name</h2>
+    <h2>{{ $category->name }}</h2>
 
     @foreach($businesses as $business)
         <hr/>
-        <div class="single-business-container">
+        <div class="single-business-container business-card">
             <div class="business-name-logo">
                 <p class="name">{{ $business->name}}</p>
             </div>
@@ -47,7 +48,7 @@
                         <a href="{{ $business->linkedin_link }}"><img src="{{ asset('images/icons/linkedin-green.png') }}" alt="linkedin"></a>
                     @endif
                 </div>
-                
+
                 @if(auth()->user()->role == 'A')
                     <div class="admin-actions">
                         <form action="" method="post">
@@ -56,10 +57,13 @@
                         </form>
                     </div>
                 @endif
+
             </div>
         </div>
     @endforeach
 
 </div>
+
+</body>
 
 @endsection
