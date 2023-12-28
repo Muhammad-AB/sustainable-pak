@@ -64,16 +64,9 @@ class BusinessController extends Controller
 
     public function dashboard(Request $request)
     {
-        // $business = Business::findOrFail($id);
-        // $business1 = User::findOrFail($id)->businesses;
-        // if (auth()->user()->id !== $business->user_id) {
-        //     abort(403, 'Unauthorized access');
-        // }
-
         // Retrieve the business associated with the authenticated user
         $business = $request->user()->businesses;
 
-        // If the user doesn't have a business, handle accordingly
         if (!$business) {
             abort(404, 'Business details not found');
         }
@@ -83,8 +76,6 @@ class BusinessController extends Controller
 
     public function editDetails(Request $request)
     {
-        // $business = Business::findOrFail($id);
-        // $business = User::findOrFail($id)->businesses;
         $business = $request->user()->businesses;
         $categories = Category::all();
 
@@ -95,6 +86,7 @@ class BusinessController extends Controller
 
         return view('Main.business.business_edit_details', ['business' => $business, 'categories' => $categories]);
     }
+    
     public function saveDetails(Request $request)
     {
         $business = $request->user()->businesses;

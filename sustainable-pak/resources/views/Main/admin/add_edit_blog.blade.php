@@ -14,7 +14,7 @@
                 @endif
             </div>
             <div class="dashboard-body">
-                <form action="{{ route('admin.updateBlog', ['id' => $blog->id]) }}" method="post">
+                <form action="{{ isset($blog) ? route('admin.updateBlog', ['id' => $blog->id]) : route('admin.updateBlog')  }}" method="post">
                     @csrf
 
                     <label for="blog-title">Blog Title:</label>

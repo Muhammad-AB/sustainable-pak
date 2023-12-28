@@ -99,6 +99,7 @@
             </form>
             @else
             <a href="{{ route('login') }}">Login</a> <!-- user not signed in -->
+            <a href="{{ route('register.user') }}">Sign Up</a> <!-- user not signed in -->
             @endif
 
         </nav>

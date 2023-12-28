@@ -10,20 +10,20 @@ use App\Models\Business;
 
 class CommonController extends Controller
 {
-    public function home(Request $request)
+    public function home()
     {
         $categories = Category::all();
         $blogs = Blog::all();
         return view('Main.home', ['categories' => $categories, 'blogs' => $blogs]);
     }
 
-    public function allCategories(Request $request)
+    public function allCategories()
     {
         $categories = Category::paginate(5);
         return view('Main.categories', ['categories' => $categories]);
     }
 
-    public function allBlogs(Request $request)
+    public function allBlogs()
     {
         $blogs = Blog::all();
         return view('Main.all_blogs', ['blogs' => $blogs]);
@@ -35,7 +35,7 @@ class CommonController extends Controller
         return view('Main.my_business_list', ['businesses' => $businesses]);
     }
 
-    public function blog(Request $request, $id = null)
+    public function blog($id = null)
     {
         $blog = Blog::find($id);
         // Retrieve 3 random blog suggestions excluding the current blog
@@ -43,7 +43,7 @@ class CommonController extends Controller
         return view('Main.blog', ['blog' => $blog, 'blogSuggestions' => $blogSuggestions]);
     }
 
-    public function about(Request $request)
+    public function about()
     {
         $about = About::first();
         return view('Main.about', ['about' => $about]);

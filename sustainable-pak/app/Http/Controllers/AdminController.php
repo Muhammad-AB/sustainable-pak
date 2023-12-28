@@ -92,7 +92,7 @@ class AdminController extends Controller
     {
         $about = About::first();
 
-        return view('Main.admin.my_admin_edit_about', ['about' => $about]);
+        return view('Main.admin.edit_about', ['about' => $about]);
     }
 
     public function updateAbout(Request $request)
@@ -110,6 +110,6 @@ class AdminController extends Controller
                 'content' => $request->input('content'),
             ]);
         }
-        return redirect()->route('about', ['about', $about])->with('success', 'About page updated successfully!');
+        return redirect()->route('about', ['about' => $about])->with('success', 'About page updated successfully!');
     }
 }
