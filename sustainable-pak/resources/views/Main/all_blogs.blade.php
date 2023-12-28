@@ -20,7 +20,7 @@
                     <button type="submit">Edit Blog</button>
                 </form>
 
-                <form action="{{-- route('admin.deleteBlog', ['id' => $blog->id]) --}}" method="post">
+                <form action="{{ route('admin.deleteBlog', ['id' => $blog->id]) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Delete Blog</button>

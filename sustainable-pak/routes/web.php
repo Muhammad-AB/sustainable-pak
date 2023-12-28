@@ -74,9 +74,11 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::delete('/admin/pending/requests/{id?}', [AdminController::class, 'rejectRequest'])->name('admin.request.reject');
 
     Route::get('/admin/businesses', [AdminController::class, 'businesses'])->name('admin.businesses');
+    Route::delete('/admin/delete/business{id?}', [AdminController::class, 'deleteBusiness'])->name('admin.delete.business');
 
     Route::any('/admin/blog/{id?}', [AdminController::class, 'editBlog'])->name('admin.addBlog');
     Route::post('/admin/add/blog/{id?}', [AdminController::class, 'updateBlog'])->name('admin.updateBlog');
+    Route::delete('/admin/delete/blog/{id?}', [AdminController::class, 'deleteBlog'])->name('admin.deleteBlog');
 
     Route::get('/admin/edit/about', [AdminController::class, 'editAbout'])->name('admin.about');
     Route::post('/admin/edit/about', [AdminController::class, 'updateAbout'])->name('admin.updateAbout');

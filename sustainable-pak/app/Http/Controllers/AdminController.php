@@ -60,7 +60,20 @@ class AdminController extends Controller
     public function businesses()
     {
         $businesses = Business::all();
-        return view('Main.my_business_list', ['businesses' => $businesses]);
+        return view('Main.all_businesses', ['businesses' => $businesses]);
+    }
+
+    public function deleteBusiness($id)
+    {
+        $business = Business::find($id);
+        $user = $business->user;
+        $name = $business->user->name;
+        $user->delete();
+        // $businesses = Business::all();
+
+        // return view('Main.all_businesses', ['businesses' => $businesses]);
+        return redirect()->route('admin.businesses')->with('success', "Business \"$name\" deleted successfully!");
+
     }
 
     public function editBlog($id = null)
@@ -79,13 +92,23 @@ class AdminController extends Controller
                 'name' => $request->input('name'),
                 'content' => $request->input('content'),
             ]);
+            return redirect()->route('blog', ['id' => $blog->id])->with('success', "Blog \"$blog->name\" created successfully!");
         } else {
             $blog->update([
                 'name' => $request->name,
                 'content' => $request->content,
             ]);
         }
-        return redirect()->route('blog', ['id' => $blog->id])->with('success', "Blog $blog->name updated successfully!");
+        return redirect()->route('blog', ['id' => $blog->id])->with('success', "Blog \"$blog->name\" updated successfully!");
+    }
+
+    public function deleteBlog(Request $request, $id = null)
+    {
+
+        $blog = Blog::find($id);
+
+        $blog->delete();
+        return redirect()->route('all.blogs')->with('success', "Blog \"$blog->name\" deleted successfully!");
     }
 
     public function editAbout()
