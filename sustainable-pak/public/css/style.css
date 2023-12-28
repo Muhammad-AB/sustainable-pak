@@ -822,3 +822,29 @@ textarea {
     width: 300px;
     margin-top: 80px;
 }
+
+
+.business-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.business-link {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 40%;
+    margin: 2%;
+    padding-left: 10px;
+}
+
+.business-products {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 85%;
+    margin-left: 7.5%;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
