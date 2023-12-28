@@ -4,8 +4,8 @@
 
 <div class="about-container">
     <h2>About Us</h2>
-    <h2>About Us</h2>
 
+@endphp
     <div class="about-content-container">
         <h2>About Us</h2>
         @if($about)

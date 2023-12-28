@@ -11,16 +11,12 @@
         @else
         <p>No content available for this blog.</p>
         @endif
+
+        <p class="blog-date">Created at: {{ $blog->updated_at->format('F j, Y') }}</p>
     </div>
-    <p>Created at: {{ $blog->updated_at->format('F j, Y') }}</p>
 </main>
 
-<!-- @if(auth()->user()->role == 'A')
-<div class="admin-actions">
-    <button>Edit Blog</button>
-    <button>Delete Blog</button>
-</div>
-@endif -->
+
 @if(auth()->user()->role == 'A')
 <div class="admin-actions">
     <form action="{{ route('admin.addBlog', ['id' => $blog->id]) }}" method="post">

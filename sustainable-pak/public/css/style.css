@@ -468,6 +468,10 @@ textarea {
     font-size: xx-large;
 }
 
+.blog-content .blog-date {
+    color: #433e3b;
+}
+
 .blog-content img {
     width: 1000px;
     height: 300px;
@@ -557,7 +561,7 @@ textarea {
 }
 
 .about-content p {
-    font-size: large;
+    font-size: larger;
     padding-left: 50px;
 }
 
@@ -618,8 +622,6 @@ textarea {
 }
 
 
-
-
 /* Dashboards */
 
 .dashboard-container {
@@ -662,7 +664,6 @@ textarea {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     margin-bottom: 5%;
 }
-
 
 
 .edit-blog-card {
@@ -777,7 +778,7 @@ textarea {
 
 .blog-card {
     width: 70%;
-    background-color: white;
+    background-color: #bec8a9;
     border-radius: 20px;
     border: 1px solid rgb(67, 62, 59);
     margin-top: 50px;
@@ -786,12 +787,3 @@ textarea {
     padding: 20px;
 }
 
-.about-content {
-    padding: 10px;
-    background-color: white;
-    font-size: larger;
-    margin: 0 auto;
-    margin-bottom: 40px;
-    margin-top: 10px;
-    width: 90%;
-}

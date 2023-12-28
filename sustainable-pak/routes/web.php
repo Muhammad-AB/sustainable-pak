@@ -150,6 +150,11 @@ Route::get('/abt', function () {
     });
     Route::get('/edtabt', function () {
         return view('Main.admin.edit_about');
-    });    Route::get('/edtblg', function () {
+    });    
+    Route::get('/edtblg', function () {
         return view('Main.admin.add_edit_blog');
+    });
+
+    Route::get('/all', function () {
+        return view('Main.all_businesses');
     });

@@ -12,12 +12,7 @@
             <p>Updated: {{ $blog->updated_at->format('F j, Y') }}</p>
             <p>{{ Str::limit($blog->content, 100) }}</p>
             <p><a href="{{ route('blog', ['id' => $blog->id]) }}">Read More</a></p>
-            <!-- @if(auth()->user()->role == 'A')
-            <div class="admin-actions">
-                <button >Edit Blog</button>
-                <button>Delete Blog</button>
-            </div>
-            @endif -->
+
             @if(auth()->user()->role == 'A')
             <div class="admin-actions">
                 <form action="{{ route('admin.addBlog', ['id' => $blog->id]) }}" method="post">
