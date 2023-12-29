@@ -8,7 +8,7 @@
         <div class="login-card">
             <div class="login-form">
             <h2 style="text-align: left;">Log In</h2>
-                <form action="{{route('login')}}" method="post">
+                <form action="{{ route('login') }}" method="post">
                     @csrf
                     <input type="email" name="email" placeholder="email" required>
                     @error('email')

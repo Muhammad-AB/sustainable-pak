@@ -27,13 +27,6 @@
 
                     <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
 
-                    <!-- <label for="category">Choose a Category:</label>
-                    <select name="category" id="category" required>
-                        <option value="Zero Waste">Zero Waste</option>
-                        <option value="Sustainable Energy">Sustainable Energy</option>
-                        <option value="Sustainable Clothing">Sustainable Clothing</option>
-                        <option value="Other">Other</option>
-                    </select> -->
                     
                     <label for="category">Choose a Category:</label>
                     <select name="category" id="category" required>

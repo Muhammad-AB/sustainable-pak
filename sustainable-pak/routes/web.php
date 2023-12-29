@@ -25,13 +25,6 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-// Route::get('/home', function () {
-//     return view('Main/home');
-// });
-
-// Route::get('/login', function () {
-//      return view('Main.login');
-// });
 
 Route::middleware('guest')->group(function () {
     Route::get('register/user', [RegisteredUserController::class, 'create'])->name('register.user');
@@ -105,33 +98,3 @@ Route::middleware('auth', 'business')->group(function () {
 // });
 
 // require __DIR__ . '/auth.php';
-
-// Route::get('/pb', function () {
-//          return view('Main.admin.pending_businesses');
-//      });
-
-// Route::get('/abt', function () {
-//         return view('Main.about');
-//     });
-
-//     Route::get('/blg', function () {
-//         return view('Main.blog');
-//     });
-
-    Route::get('/blgs', function () {
-        return view('Main.all_blogs');
-    });
-    Route::get('/edtabt', function () {
-        return view('Main.admin.edit_about');
-    });    
-    Route::get('/edtblg', function () {
-        return view('Main.admin.add_edit_blog');
-    });
-
-    Route::get('/all', function () {
-        return view('Main.all_businesses');
-    });
-
-    Route::get('/wait', function () {
-        return view('Main.business.business_waiting');
-    });

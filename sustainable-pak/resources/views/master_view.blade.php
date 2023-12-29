@@ -7,38 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SustainablePAK</title>
     <link rel="icon" href="{{ asset('images/icon.ico') }}">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!-- <style>
-        .alert {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 30%;
-            z-index: 1000;
-            /* Set a high z-index to ensure it's in front of all elements */
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            display: none;
-            /* Initially hide the alert */
-        }
-    </style>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Display the success message
-            var successMessage = document.createElement('div');
-            successMessage.className = 'alert';
-            successMessage.innerHTML = '{{ session("success") }}';
-            document.body.appendChild(successMessage);
-
-            // Automatically hide the success message after 5 seconds
-            setTimeout(function() {
-                successMessage.style.display = 'none';
-            }, 5000);
-        });
-    </script> -->
     <style>
         .alert-success {
             position: fixed;
@@ -58,86 +30,86 @@
 
 <body>
     @if(session('success'))
-    <div class="alert alert-success" style="background-color: #4CAF50; color: white; padding: 10px;">
+    <div class="alert-success" id="successMessage">
         {{ session('success') }}
     </div>
     @endif
-    <!-- @if(session('success'))
-    <script>
-        alert("{{ session('success') }}");
-    </script>
-    @endif -->
-    <header>
-        <a href="{{ route('home') }}">
-            <div class="logo-name">
-                <img src="{{ asset('images/logo.png') }}" alt="SustainablePAK logo">
-                <h1>SustainablePAK</h1>
-            </div>
-        </a>
 
-        <nav>
-            @if(auth()->check())
-            @if(auth()->user()->role == 'A')
-            <a href="{{ route('admin.dashboard') }}">Dashboard</a> <!-- user signed in -->
-            @endif
-            @if(auth()->user()->role == 'B')
-            <a href="{{ route('business.dashboard') }}">Dashboard</a> <!-- user signed in -->
-            @endif
-
-            <a href="{{ route('home') }}">Home</a>
-            <a href="{{ route('all.categories') }}">Businesses</a>
-            <a href="{{ route('all.blogs') }}">Blog</a>
-            <!-- <a href="{{ url('resources.html') }}">Resources</a> -->
-            <a href="{{ route('about') }}">About</a>
-
-
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <a :href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">
-                    {{ __('Log Out') }}
-                </a>
-            </form>
-            @else
-            <a href="{{ route('login') }}">Login</a> <!-- user not signed in -->
-            <a href="{{ route('register.user') }}">Sign Up</a> <!-- user not signed in -->
-            @endif
-
-        </nav>
-
-        <div id="menu-btn">&#9776;</div>
-    </header>
-
-    @yield('section')
-
-    <footer>
-
-        <div class="footer">
-
-            <div class="footer-links">
-                <div class="footer-links-text">
-                    <a href="{{ route('home') }}">Home</a>
-                    <a href="{{ route('all.categories') }}">Sustainable Businesses</a>
-                    <a href="{{ route('all.blogs') }}">Blog</a>
-                    <!-- <a href="">Resources</a> -->
-                    <a href="{{ route('about') }}">About</a>
-                    <a href="{{ route('login') }}">Login/Sign up</a>
+        <header>
+            <a href="{{ route('home') }}">
+                <div class="logo-name">
+                    <img src="{{ asset('images/logo.png') }}" alt="SustainablePAK logo">
+                    <h1>SustainablePAK</h1>
                 </div>
+            </a>
 
-                <div class="contact">
-                    <p><b>Contact Us: </b></p>
-                    <div class="contact-icons">
-                        <a href=""><img src="{{ asset('images/icons/facecbook.png') }}" alt="facebook"></a>
-                        <a href=""><img src="{{ asset('images/icons/instagram.png') }}" alt="instagram"></a>
-                        <a href=""><img src="{{ asset('images/icons/twitter.png') }}" alt="twitter"></a>
-                        <a href=""><img src="{{ asset('images/icons/whatsapp.png') }}" alt="whatsapp"></a>
-                        <a href=""><img src="{{ asset('images/icons/linkedin.png') }}" alt="linkedin"></a>
+            <nav>
+                @if(auth()->check())
+                @if(auth()->user()->role == 'A')
+                <a href="{{ route('admin.dashboard') }}">Dashboard</a> 
+                @endif
+                @if(auth()->user()->role == 'B')
+                <a href="{{ route('business.dashboard') }}">Dashboard</a>
+                @endif
+
+                <a href="{{ route('home') }}">Home</a>
+                <a href="{{ route('all.categories') }}">Businesses</a>
+                <a href="{{ route('all.blogs') }}">Blog</a>
+                <a href="{{ route('about') }}">About</a>
+
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a :href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </a>
+                </form>
+                @else
+                <a href="{{ route('login') }}">Login</a> <!-- user not signed in -->
+                <a href="{{ route('register.user') }}">Sign Up</a> <!-- user not signed in -->
+                @endif
+
+            </nav>
+
+            <div id="menu-btn">&#9776;</div>
+        </header>
+
+        @yield('section')
+
+        <footer>
+
+            <div class="footer">
+
+                <div class="footer-links">
+                    <div class="footer-links-text">
+                        <a href="{{ route('home') }}">Home</a>
+                        <a href="{{ route('all.categories') }}">Sustainable Businesses</a>
+                        <a href="{{ route('all.blogs') }}">Blog</a>
+                        <!-- <a href="">Resources</a> -->
+                        <a href="{{ route('about') }}">About</a>
+                        <a href="{{ route('login') }}">Login/Sign up</a>
+                    </div>
+
+                    <div class="contact">
+                        <p><b>Contact Us: </b></p>
+                        <div class="contact-icons">
+                            <a href=""><img src="{{ asset('images/icons/facecbook.png') }}" alt="facebook"></a>
+                            <a href=""><img src="{{ asset('images/icons/instagram.png') }}" alt="instagram"></a>
+                            <a href=""><img src="{{ asset('images/icons/twitter.png') }}" alt="twitter"></a>
+                            <a href=""><img src="{{ asset('images/icons/whatsapp.png') }}" alt="whatsapp"></a>
+                            <a href=""><img src="{{ asset('images/icons/linkedin.png') }}" alt="linkedin"></a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </footer>
+            </div>
+        </footer>
 
 </body>
+<script>
+    setTimeout(function() {
+        document.getElementById('successMessage').style.opacity = '0';
+    }, 4000);
+</script>
 
 </html>

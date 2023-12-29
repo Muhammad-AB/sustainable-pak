@@ -13,19 +13,19 @@ class CommonController extends Controller
     public function home()
     {
         $categories = Category::all();
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('updated_at', 'desc')->get();
         return view('Main.home', ['categories' => $categories, 'blogs' => $blogs]);
     }
 
     public function allCategories()
     {
-        $categories = Category::paginate(5);
+        $categories = Category::paginate(6);
         return view('Main.categories', ['categories' => $categories]);
     }
 
     public function allBlogs()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('updated_at', 'desc')->paginate(5);
         return view('Main.all_blogs', ['blogs' => $blogs]);
     }
 

@@ -53,13 +53,8 @@ class BusinessController extends Controller
             'main_link' => $request->main_link,
         ]);
 
+        return view('Main.business.business_waiting');
 
-        // event(new Registered($user));
-
-        // Auth::login($user);
-        echo "Your Request has been Transfered Successfully. Please Wait for approval";
-
-        // return redirect('business/pendingRequest');
     }
 
     public function dashboard(Request $request)

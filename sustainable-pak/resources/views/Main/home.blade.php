@@ -5,7 +5,7 @@
 <div class="intro">
     <div class="intro-text">
         <h3>Our Vision</h3>
-        <p>{{ $about->vision ?? 'No vision available' }}</p>
+        <p>"Our vision at SustainablePAK is to catalyze a green revolution in Pakistan, fostering a nation where sustainability is not just a choice but a way of life. We aspire to build a future where eco-consciousness is ingrained in every individual and business, creating a harmonious balance between progress and environmental well-being."</p>
     </div>
 </div>
 
@@ -16,20 +16,6 @@
 
     <div class="element-container">
 
-        <!-- <div class="individual-element-container">
-            <a href=""><img src="{{ asset('images/default.png') }}" alt="Zero-Waste"></a>
-            <a href="">Zero-Waste</a>
-        </div>
-
-        <div class="individual-element-container">
-            <a href=""><img src="{{ asset('images/sustainable-energy.png') }}" alt="Sustainable Energy"></a>
-            <a href="">Sustainable Energy</a>
-        </div>
-
-        <div class="individual-element-container">
-            <a href=""><img src="{{ asset('images/default-4.png') }}" alt="Sustainable Clothing"></a>
-            <a href="">Sustainable Clothing</a>
-        </div> -->
 
         @foreach($categories->slice(0, 3) as $category)
         <div class="individual-element-container">
@@ -55,20 +41,6 @@
 
     <div class="element-container">
 
-        <!-- <div class="individual-element-container">
-            <a href=""><img src="{{ asset('images/default-blog.png') }}" alt="Image to promote sustainability"></a>
-            <a href="">Why Support Sustainable</br>Businesses</a>
-        </div>
-
-        <div class="individual-element-container">
-            <a href=""><img src="{{ asset('images/blog1.png') }}" alt="Image to sustainable lifestyle"></a>
-            <a href="">How to Live a More<br />Sustainable Lifestyle</a>
-        </div>
-
-        <div class="individual-element-container">
-            <a href=""><img src="{{ asset('images/blog2.png') }}" alt="Image of Food"></a>
-            <a href="">How to Reduce<br />Food Waste</a>
-        </div> -->
         @foreach($blogs->slice(0, 3) as $blog)
         <div class="individual-element-container">
             <a href="{{ route('blog', ['id' => $blog->id]) }}">

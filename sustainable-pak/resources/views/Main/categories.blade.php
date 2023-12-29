@@ -2,6 +2,8 @@
 
 @section('section')
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
 @if(isset($categories))
 <div class="sustainable-business-container">
     <div class="element-container">
@@ -18,22 +20,10 @@
     </div>
 </div>
 
-<div style="margin-top: 20px; text-align: center;">
-    {{ $categories->links() }}
+<div style="margin-right: 20px; margin-left: 20px; text-align: center;">
+    {{ $categories->links('pagination::bootstrap-5') }}
 </div>
-<!-- <div style="margin-top: 20px; text-align: center;">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center" style="margin: 0; padding: 0;">
-            {{ $categories->links() }}
-        </ul>
-    </nav>
-</div> -->
-<!-- <style>
-    .pagination .page-item .page-link {
-        font-size: 14px;
-        /* Adjust the font size as needed */
-    }
-</style> -->
+
 
 
 @else
