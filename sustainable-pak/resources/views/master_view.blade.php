@@ -34,23 +34,23 @@
         {{ session('success') }}
     </div>
     @endif
+    
+    <header>
+        <a href="{{ route('home') }}">
+            <div class="logo-name">
+                <img src="{{ asset('images/logo.png') }}" alt="SustainablePAK logo">
+                <h1>SustainablePAK</h1>
+            </div>
+        </a>
 
-        <header>
-            <a href="{{ route('home') }}">
-                <div class="logo-name">
-                    <img src="{{ asset('images/logo.png') }}" alt="SustainablePAK logo">
-                    <h1>SustainablePAK</h1>
-                </div>
-            </a>
-
-            <nav>
-                @if(auth()->check())
-                @if(auth()->user()->role == 'A')
-                <a href="{{ route('admin.dashboard') }}">Dashboard</a> 
-                @endif
-                @if(auth()->user()->role == 'B')
-                <a href="{{ route('business.dashboard') }}">Dashboard</a>
-                @endif
+        <nav id="main-nav">
+            @if(auth()->check())
+            @if(auth()->user()->role == 'A')
+            <a href="{{ route('admin.dashboard') }}">Dashboard</a> <!-- user signed in -->
+            @endif
+            @if(auth()->user()->role == 'B')
+            <a href="{{ route('business.dashboard') }}">Dashboard</a> <!-- user signed in -->
+            @endif
 
                 <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('all.categories') }}">Businesses</a>
@@ -104,6 +104,8 @@
 
             </div>
         </footer>
+
+    <script src="{{ asset('js/script.js') }}"></script>
 
 </body>
 <script>
