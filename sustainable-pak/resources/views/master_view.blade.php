@@ -34,7 +34,7 @@
         {{ session('success') }}
     </div>
     @endif
-    
+
     <header>
         <a href="{{ route('home') }}">
             <div class="logo-name">
@@ -52,58 +52,58 @@
             <a href="{{ route('business.dashboard') }}">Dashboard</a> <!-- user signed in -->
             @endif
 
-                <a href="{{ route('home') }}">Home</a>
-                <a href="{{ route('all.categories') }}">Businesses</a>
-                <a href="{{ route('all.blogs') }}">Blog</a>
-                <a href="{{ route('about') }}">About</a>
+            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('all.categories') }}">Businesses</a>
+            <a href="{{ route('all.blogs') }}">Blog</a>
+            <a href="{{ route('about') }}">About</a>
 
 
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <a :href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </a>
-                </form>
-                @else
-                <a href="{{ route('login') }}">Login</a> <!-- user not signed in -->
-                <a href="{{ route('register.user') }}">Sign Up</a> <!-- user not signed in -->
-                @endif
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a :href="route('logout')" onclick="event.preventDefault();this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </a>
+            </form>
+            @else
+            <a href="{{ route('login') }}">Login</a> <!-- user not signed in -->
+            <a href="{{ route('register.user') }}">Sign Up</a> <!-- user not signed in -->
+            @endif
 
-            </nav>
+        </nav>
 
-            <div id="menu-btn">&#9776;</div>
-        </header>
+        <div id="menu-btn">&#9776;</div>
+    </header>
 
-        @yield('section')
+    @yield('section')
 
-        <footer>
+    <footer>
 
-            <div class="footer">
+        <div class="footer">
 
-                <div class="footer-links">
-                    <div class="footer-links-text">
-                        <a href="{{ route('home') }}">Home</a>
-                        <a href="{{ route('all.categories') }}">Sustainable Businesses</a>
-                        <a href="{{ route('all.blogs') }}">Blog</a>
-                        <!-- <a href="">Resources</a> -->
-                        <a href="{{ route('about') }}">About</a>
-                        <a href="{{ route('login') }}">Login/Sign up</a>
-                    </div>
-
-                    <div class="contact">
-                        <p><b>Contact Us: </b></p>
-                        <div class="contact-icons">
-                            <a href=""><img src="{{ asset('images/icons/facecbook.png') }}" alt="facebook"></a>
-                            <a href=""><img src="{{ asset('images/icons/instagram.png') }}" alt="instagram"></a>
-                            <a href=""><img src="{{ asset('images/icons/twitter.png') }}" alt="twitter"></a>
-                            <a href=""><img src="{{ asset('images/icons/whatsapp.png') }}" alt="whatsapp"></a>
-                            <a href=""><img src="{{ asset('images/icons/linkedin.png') }}" alt="linkedin"></a>
-                        </div>
-                    </div>
+            <div class="footer-links">
+                <div class="footer-links-text">
+                    <a href="{{ route('home') }}">Home</a>
+                    <a href="{{ route('all.categories') }}">Sustainable Businesses</a>
+                    <a href="{{ route('all.blogs') }}">Blog</a>
+                    <!-- <a href="">Resources</a> -->
+                    <a href="{{ route('about') }}">About</a>
+                    <a href="{{ route('login') }}">Login/Sign up</a>
                 </div>
 
+                <div class="contact">
+                    <p><b>Contact Us: </b></p>
+                    <div class="contact-icons">
+                        <a href=""><img src="{{ asset('images/icons/facecbook.png') }}" alt="facebook"></a>
+                        <a href=""><img src="{{ asset('images/icons/instagram.png') }}" alt="instagram"></a>
+                        <a href=""><img src="{{ asset('images/icons/twitter.png') }}" alt="twitter"></a>
+                        <a href=""><img src="{{ asset('images/icons/whatsapp.png') }}" alt="whatsapp"></a>
+                        <a href=""><img src="{{ asset('images/icons/linkedin.png') }}" alt="linkedin"></a>
+                    </div>
+                </div>
             </div>
-        </footer>
+
+        </div>
+    </footer>
 
     <script src="{{ asset('js/script.js') }}"></script>
 
