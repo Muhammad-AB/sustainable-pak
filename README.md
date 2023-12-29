@@ -110,7 +110,7 @@ User-friendly interface for admin to edit and update the About page.
   Restricts access to business-specific routes based on the user's role.
   Registered name in kernel.php: business
 
-## Models with Relationships:
+### Models with Relationships:
 
 * **User Model:** 
   Represents user data with a one-to-one relationship to the Business Model.
