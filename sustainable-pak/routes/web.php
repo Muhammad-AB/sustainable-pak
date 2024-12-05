@@ -25,7 +25,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-
+// Auth Routes
 Route::middleware('guest')->group(function () {
     Route::get('register/user', [RegisteredUserController::class, 'create'])->name('register.user');
 
@@ -41,6 +41,8 @@ Route::middleware('guest')->group(function () {
 });
 
 
+
+// Routes for all users
 Route::middleware('auth')->group(function () {
 
     Route::get('/home', [CommonController::class, 'home'])->name('home');
@@ -59,6 +61,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
+// Routes for admin
 Route::middleware('auth', 'admin')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
@@ -75,9 +79,11 @@ Route::middleware('auth', 'admin')->group(function () {
 
     Route::get('/admin/edit/about', [AdminController::class, 'editAbout'])->name('admin.about');
     Route::post('/admin/edit/about', [AdminController::class, 'updateAbout'])->name('admin.updateAbout');
-    // Route::patch('/admin/edit/about', [AdminController::class, 'editAbout'])->name('admin.updateAbout');
 });
 
+
+
+// Routes for businesses
 Route::middleware('auth', 'business')->group(function () {
 
     Route::get('/business/dashboard', [BusinessController::class, 'dashboard'])->name('business.dashboard');
@@ -87,14 +93,4 @@ Route::middleware('auth', 'business')->group(function () {
 });
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
-// require __DIR__ . '/auth.php';

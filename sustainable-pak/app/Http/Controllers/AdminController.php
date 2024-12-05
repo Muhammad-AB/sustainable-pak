@@ -12,17 +12,20 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    // return dashboard view
     public function dashboard(Request $request)
     {
         return view('Main.admin.admin_dashboard');
     }
 
+    // return pending request page
     public function pendingRequests()
     {
         $requests = PendingRequest::all();
         return view('Main.admin.pending_businesses', ['requests' => $requests]);
     }
 
+    // approve request
     public function approveRequest($id)
     {
         $request = PendingRequest::find($id);
@@ -50,6 +53,7 @@ class AdminController extends Controller
         return redirect()->route('admin.requests')->with('success', 'Business Request Approved Successfully');
     }
 
+    // reject request
     public function rejectRequest($id)
     {
         $request = PendingRequest::find($id);
@@ -57,12 +61,14 @@ class AdminController extends Controller
         return redirect()->route('admin.requests')->with('success', 'Business Request Rejected Successfully');
     }
 
+    // return all businesses listed
     public function businesses()
     {
         $businesses = Business::all();
         return view('Main.all_businesses', ['businesses' => $businesses]);
     }
 
+    // delete business from the database
     public function deleteBusiness($id)
     {
         $business = Business::find($id);
@@ -73,15 +79,16 @@ class AdminController extends Controller
 
         // return view('Main.all_businesses', ['businesses' => $businesses]);
         return redirect()->route('admin.businesses')->with('success', "Business \"$name\" deleted successfully!");
-
     }
 
+    // return edit blog page
     public function editBlog($id = null)
     {
         $blog = Blog::find($id);
         return view('Main.admin.add_edit_blog', ['blog' => $blog]);
     }
 
+    // edit blog on website
     public function updateBlog(Request $request, $id = null)
     {
 
@@ -102,6 +109,7 @@ class AdminController extends Controller
         return redirect()->route('blog', ['id' => $blog->id])->with('success', "Blog \"$blog->name\" updated successfully!");
     }
 
+    // delete blog on website
     public function deleteBlog(Request $request, $id = null)
     {
 
@@ -111,6 +119,7 @@ class AdminController extends Controller
         return redirect()->route('all.blogs')->with('success', "Blog \"$blog->name\" deleted successfully!");
     }
 
+    // return edit about us page
     public function editAbout()
     {
         $about = About::first();
@@ -118,6 +127,7 @@ class AdminController extends Controller
         return view('Main.admin.edit_about', ['about' => $about]);
     }
 
+    // edit about us
     public function updateAbout(Request $request)
     {
         $about = About::first();

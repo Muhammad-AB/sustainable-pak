@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('description', 300);
+            $table->string('description', 2000);
             $table->unsignedBigInteger('category_id');
             $table->string('main_link', 255);
             $table->timestamp('email_verified_at')->nullable();

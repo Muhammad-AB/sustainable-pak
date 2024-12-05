@@ -25,16 +25,15 @@ class BusinessController extends Controller
     public function create(): View
     {
         $categories = Category::all();
-
         return view('Main.business_signup', ['categories' => $categories]);
     }
 
     /**
-     * Handle an incoming registration request.
+     * Handle an incoming business registration request.
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    // : RedirectResponse
+    // : return view
     public function store(Request $request)
     {
         $request->validate([
@@ -54,12 +53,11 @@ class BusinessController extends Controller
         ]);
 
         return view('Main.business.business_waiting');
-
     }
 
+    // return dashboard view for business
     public function dashboard(Request $request)
     {
-        // Retrieve the business associated with the authenticated user
         $business = $request->user()->businesses;
 
         if (!$business) {
@@ -69,6 +67,8 @@ class BusinessController extends Controller
         return view('Main.business.business_dashboard', ['business' => $business]);
     }
 
+
+    // return edit detail page
     public function editDetails(Request $request)
     {
         $business = $request->user()->businesses;
@@ -81,7 +81,9 @@ class BusinessController extends Controller
 
         return view('Main.business.business_edit_details', ['business' => $business, 'categories' => $categories]);
     }
-    
+
+
+    // update changes in database
     public function saveDetails(Request $request)
     {
         $business = $request->user()->businesses;

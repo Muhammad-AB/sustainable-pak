@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
 
-            $table->string('description', 300);
+            $table->string('description', 2000);
             $table->unsignedBigInteger('category_id');
             $table->string('product1', 255)->nullable();
             $table->string('product2', 255)->nullable();
